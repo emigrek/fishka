@@ -81,14 +81,16 @@ export default {
       }
     },
     upsideDown() {
+      if(!this.control) return;
+      
       this.flashcardSide = !this.flashcardSide;
       this.control = false;
 
       setTimeout(() => {
         this.flashcardSide = !this.flashcardSide;
         setTimeout(() => {
-          this.control = true;
           this.generateRandomQuestion();
+          this.control = true;
         });
       }, 1500);
     },
