@@ -22,7 +22,7 @@
               </v-progress-linear>
             </template>
             <v-card-title>
-              <v-text-field class="text-center" autofocus :disabled="!control" v-model="translation" color="white" hide-details flat/>
+              <v-text-field class="text-center" autofocus :disabled="!control" v-model="translation" :color="color" hide-details flat/>
             </v-card-title>
             <v-card-text class="text-center">
               <v-btn text @click="abort();">Przerwij quiz <v-icon class="ml-2" small>mdi-close</v-icon></v-btn>
@@ -55,6 +55,7 @@ export default {
     return {
       loading: true,
       control: true,
+      color: "white",
       flashcardSide: 0
     };
   },
@@ -74,9 +75,13 @@ export default {
     handleTranslation(e) {
       this.$store.commit("quiz/SET_USER_TRANSLATION", e);
 
+      this.matchInputColor();
+
       if(this.quiz.progress.randomQuestion.answer == this.quiz.progress.userTranslation) {        
         this.$store.commit("quiz/TOGGLE_QUESTION_ANSWERED", this.quiz.progress.randomQuestion);
         this.$store.commit("quiz/SET_USER_TRANSLATION", "");
+        this.matchInputColor();
+        
         if(!this.generateRandomQuestion()) return this.finish();
       }
     },
@@ -101,6 +106,15 @@ export default {
         return 1;
       } else {
         return 0;
+      }
+    },
+    matchInputColor() {
+      if(!this.quiz.progress.userTranslation.length) {
+        this.color = "white";
+      } else if(this.quiz.progress.randomQuestion.answer.indexOf(this.quiz.progress.userTranslation, 0) == 0) {
+        this.color = "green";
+      } else if (this.quiz.progress.randomQuestion.answer.indexOf(this.quiz.progress.userTranslation, 0) < 0) {
+        this.color = "red";
       }
     },
     abort() {
