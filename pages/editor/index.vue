@@ -120,7 +120,7 @@ import fileDownload from "js-file-download";
 
 export default {
   head: {
-    title: `✏️ Fishka • Edytor`,
+    title: `Fishka • Edytor`,
     meta: [{ hid: "description", name: "description", content: "Edytor" }]
   },
   components: {

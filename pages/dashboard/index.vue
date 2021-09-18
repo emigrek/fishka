@@ -88,7 +88,7 @@ import { pickFile } from 'js-pick-file';
 
 export default {
   head: {
-    title: `📋 Fishka • Dashboard`,
+    title: `Fishka • Dashboard`,
     meta: [{ hid: "description", name: "description", content: "Dashboard" }],
   },
   components: {

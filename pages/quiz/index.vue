@@ -3,7 +3,7 @@
     <header class="header pt-10 pb-15">
       <div class="header-content-container">
         <transition name="flipFlashcard" mode="out-in">
-          <div class="flashcard" @click="upsideDown" :key="flashcardSide">
+          <div class="flashcard" v-shortkey.once="['shift', 's']" @shortkey="upsideDown" @click="upsideDown" :key="flashcardSide">
               <v-sheet class="mx-auto clickable nonselectable rounded-xl d-flex align-center" color="white" width="25rem" height="12rem">
                 <div class="flashcard-text black--text text-h4 ml-3">
                   {{(flashcardSide) ? quiz.progress.randomQuestion.answer : quiz.progress.randomQuestion.question}}
@@ -22,13 +22,15 @@
               </v-progress-linear>
             </template>
             <v-card-title>
-              <v-text-field autofocus :disabled="!control" v-model="translation" color="white" filled label="Odpowiedź" counter/>
+              <v-text-field class="text-center" autofocus :disabled="!control" v-model="translation" color="white" hide-details flat/>
             </v-card-title>
             <v-card-text class="text-center">
-              <v-btn text @click="generateRandomQuestion(); dice = dices[Math.floor(Math.random() * dices.length)];"><v-icon class="mr-2" small>{{ dice }}</v-icon> Losuj</v-btn>
               <v-btn text @click="abort();">Przerwij quiz <v-icon class="ml-2" small>mdi-close</v-icon></v-btn>
             </v-card-text>
           </v-card>
+          <div class="text-center my-3 grey--text text--darken-1 caption">
+            naciśnij <kbd>SHIFT</kbd>+<kbd>S</kbd> by odwrócić fiszkę i wylosować następną
+          </div>
         </v-col>
       </v-row>
     </v-container>
@@ -46,16 +48,14 @@ import { mapState, mapMutations } from "vuex";
 
 export default {
   head: {
-    title: `🎮 Fishka • Quiz`,
+    title: `Fishka • Quiz`,
     meta: [{ hid: "description", name: "description", content: "Quiz" }]
   },
   data() {
     return {
       loading: true,
       control: true,
-      flashcardSide: 0,
-      dice: "mdi-dice-6",
-      dices: ["mdi-dice-1", "mdi-dice-2", "mdi-dice-3", "mdi-dice-4", "mdi-dice-5", "mdi-dice-6"]
+      flashcardSide: 0
     };
   },
   methods: {
