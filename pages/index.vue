@@ -1,5 +1,20 @@
 <template>
-  <v-img @click="$router.push('/dashboard');" eager contain height="80vh" class="mx-auto" position="center center" style="cursor: pointer;" src="/logo.png"/>
+  <v-overlay
+        opacity="1"
+        absolute
+        :value="true"
+        dark
+        color="black"
+        class="black--text text-center"
+        style="z-index: 1000;"
+    >
+      <v-img 
+        eager contain height="10vh" 
+        class="mx-auto" 
+        position="center center"
+        src="/logo.png"
+      />
+  </v-overlay>
 </template>
 
 <script>
@@ -7,7 +22,10 @@ export default {
   head: {
     title: `Fishka`,
   },
-  layout: "blank"
+  layout: "blank",
+  mounted() {
+    setTimeout(() => this.$router.push('/dashboard'), 3000);
+  }
 }
 </script>
 
