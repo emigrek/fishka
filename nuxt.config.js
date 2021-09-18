@@ -41,7 +41,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    'plugins/vuetify-snackbar',
+    { src: 'plugins/vuetify-snackbar', ssr: false },
     { src: "plugins/vue-shortkey.js", mode: "client" }
   ],
   /*
@@ -67,7 +67,6 @@ export default {
         }
       },
     }
-    // ...
   },
   /*
   ** vuetify module configuration
