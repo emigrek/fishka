@@ -1,0 +1,27 @@
+{
+  "name": "fishka-remastered",
+  "version": "1.0.0",
+  "description": "nowa wersja ello",
+  "author": "Emigrek#3363",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.13.6",
+    "js-file-download": "^0.4.12",
+    "js-pick-file": "^1.0.11",
+    "nanoid": "^3.1.25",
+    "nuxt": "^2.15.8",
+    "sass": "^1.41.1",
+    "vue-shortkey": "^3.1.7",
+    "vuetify-dialog": "^2.0.17",
+    "vuetify-toast-snackbar": "^0.6.1"
+  },
+  "devDependencies": {
+    "@nuxtjs/vuetify": "^1.12.1"
+  }
+}

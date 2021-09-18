@@ -1,0 +1,24 @@
+html {
+    scrollbar-color: #313131 #121212 !important;
+}
+
+.flipFlashcard-enter, .flipFlashcard-leave-to {
+    transform: rotateX(90deg);
+}
+
+.flipFlashcard-enter-active, .flipFlashcard-leave-active {
+    transition: all 0.3s;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.nonselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
