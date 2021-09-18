@@ -116,6 +116,7 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
+import fileDownload from "js-file-download";
 
 export default {
   head: {

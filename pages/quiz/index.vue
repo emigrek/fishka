@@ -3,7 +3,7 @@
     <header class="header pt-10 pb-15">
       <div class="header-content-container">
         <transition name="flipFlashcard" mode="out-in">
-          <div class="flashcard" @click="flashcardSide = !flashcardSide" :key="flashcardSide">
+          <div class="flashcard" @click="upsideDown" :key="flashcardSide">
               <v-sheet class="mx-auto clickable nonselectable rounded-xl d-flex align-center" color="white" width="25rem" height="12rem">
                 <div class="flashcard-text black--text text-h4 ml-3">
                   {{(flashcardSide) ? quiz.progress.randomQuestion.answer : quiz.progress.randomQuestion.question}}
@@ -22,7 +22,7 @@
               </v-progress-linear>
             </template>
             <v-card-title>
-              <v-text-field autofocus v-model="translation" color="white" filled label="Odpowiedź" counter/>
+              <v-text-field autofocus :disabled="!control" v-model="translation" color="white" filled label="Odpowiedź" counter/>
             </v-card-title>
             <v-card-text class="text-center">
               <v-btn text @click="generateRandomQuestion(); dice = dices[Math.floor(Math.random() * dices.length)];"><v-icon class="mr-2" small>{{ dice }}</v-icon> Losuj</v-btn>
@@ -52,6 +52,7 @@ export default {
   data() {
     return {
       loading: true,
+      control: true,
       flashcardSide: 0,
       dice: "mdi-dice-6",
       dices: ["mdi-dice-1", "mdi-dice-2", "mdi-dice-3", "mdi-dice-4", "mdi-dice-5", "mdi-dice-6"]
@@ -78,6 +79,18 @@ export default {
         this.$store.commit("quiz/SET_USER_TRANSLATION", "");
         if(!this.generateRandomQuestion()) return this.finish();
       }
+    },
+    upsideDown() {
+      this.flashcardSide = !this.flashcardSide;
+      this.control = false;
+
+      setTimeout(() => {
+        this.flashcardSide = !this.flashcardSide;
+        setTimeout(() => {
+          this.control = true;
+          this.generateRandomQuestion();
+        });
+      }, 1500);
     },
     generateRandomQuestion() {
       if(this.quiz.progress.questionsLeft.length>0) {
