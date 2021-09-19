@@ -132,12 +132,12 @@ export default {
     abort() {
       this.$store.commit("quiz/RESET_QUIZ");
       this.$router.push("/dashboard");
-      this.$toast(`Przerwano quiz na twoje życzenie. 👊`);
+      //this.$toast(`Przerwano quiz na twoje życzenie. 👊`);
     }
   },
   mounted() {
     if(this.quiz.flashcard.id == null) {
-      this.$toast(`Rozpocznij quiz z edytora lub dashboardu. 😺`, { timeout: 5000 });
+      //this.$toast(`Rozpocznij quiz z edytora lub dashboardu. 😺`, { timeout: 5000 });
       this.$router.push('/dashboard');
     }
 

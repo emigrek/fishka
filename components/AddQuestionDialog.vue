@@ -40,7 +40,7 @@ export default {
             });
 
 
-            this.$toast("Dodano nowe pytanie. 👋");
+            //this.$toast("Dodano nowe pytanie. 👋");
             this.$store.dispatch("storage/SAVE_FLASHCARDS_TO_STORAGE");
 
             this.question = '';

@@ -151,7 +151,7 @@ export default {
             that.$store.dispatch("storage/SAVE_FLASHCARDS_TO_STORAGE");
           }
           reader.onerror = function (evt) {
-            this.$toast("Wystąpił błąd podczas czytania pliku!");
+            //this.$toast("Wystąpił błąd podczas czytania pliku!");
           }
         }
       } catch (e) {
@@ -172,7 +172,7 @@ export default {
 
       if(!response) return;
       if(this.storage.flashcards.length==0)
-        return this.$toast("Brak pozycji do usunięcia. 🙃");
+        return; //this.$toast("Brak pozycji do usunięcia. 🙃");
 
       this.$store.commit("storage/SET_FLASHCARDS", []);
       this.$store.dispatch("storage/SAVE_FLASHCARDS_TO_STORAGE");
