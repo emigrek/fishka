@@ -10,6 +10,7 @@ export const state = () => ({
         userTranslation: "",
         randomQuestion: {},
         questionsLeft: [],
+        questionsSkipped: []
     }
 })
 
@@ -32,6 +33,12 @@ export const mutations = {
     SET_QUESTIONS_LEFT(state, payload) {
         state.progress.questionsLeft = payload;
     },
+    SET_QUESTIONS_SKIPPED(state, payload) {
+        state.progress.questionsSkipped = payload;
+    },
+    TOGGLE_QUESTION_SKIPPED(state, payload) {
+        state.progress.questionsSkipped.push(payload);
+    },
     TOGGLE_QUESTION_ANSWERED(state, payload) {
         state.progress.questionsLeft = state.progress.questionsLeft.filter(e=>e.id!==payload.id);
     },
@@ -48,6 +55,7 @@ export const mutations = {
             userTranslation: "",
             randomQuestion: {},
             questionsLeft: [],
+            questionsSkipped: []
         };
     }
 }

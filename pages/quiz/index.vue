@@ -66,11 +66,15 @@ export default {
       this.generateRandomQuestion();
     },
     finish() {
+      if(this.quiz.progress.questionsSkipped.length) {
+        this.$store.commit("quiz/SET_QUESTIONS_LEFT", this.quiz.progress.questionsSkipped);
+        this.$store.commit("quiz/SET_QUESTIONS_SKIPPED", []);
+        this.generateRandomQuestion();
+        return;
+      }
+
       this.$store.commit("quiz/RESET_QUIZ");
       this.$router.push("/dashboard");
-      this.$toast(`Ukończyłeś quiz, gratulacje! 👏`, {
-        timeout: 5000
-      })
     },
     handleTranslation(e) {
       this.$store.commit("quiz/SET_USER_TRANSLATION", e);
@@ -87,6 +91,7 @@ export default {
     },
     upsideDown() {
       if(!this.control) return;
+      this.$store.commit("quiz/SET_USER_TRANSLATION", "");
       
       this.flashcardSide = !this.flashcardSide;
       this.control = false;
@@ -94,12 +99,19 @@ export default {
       setTimeout(() => {
         this.flashcardSide = !this.flashcardSide;
         setTimeout(() => {
-          this.generateRandomQuestion();
+          this.skipQuestion();
           this.control = true;
         });
       }, 1500);
     },
+    skipQuestion() {
+      this.$store.commit("quiz/TOGGLE_QUESTION_ANSWERED", this.quiz.progress.randomQuestion);
+      this.$store.commit("quiz/TOGGLE_QUESTION_SKIPPED", this.quiz.progress.randomQuestion);
+
+      if(!this.generateRandomQuestion()) return this.finish();
+    },
     generateRandomQuestion() {
+      console.log(this.quiz.progress.questionsLeft);
       if(this.quiz.progress.questionsLeft.length>0) {
         let randomQuestion = this.quiz.progress.questionsLeft[Math.floor(Math.random() * this.quiz.progress.questionsLeft.length)];
         this.$store.commit("quiz/SET_RANDOM_QUESTION", randomQuestion);
