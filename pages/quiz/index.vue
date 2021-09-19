@@ -1,6 +1,6 @@
 <template>
   <div class="editor-wrapper">
-    <header class="header pt-10 pb-15">
+    <header class="header pt-10 pb-16">
       <div class="header-content-container">
         <transition name="flipFlashcard" mode="out-in">
           <div class="flashcard" v-shortkey.once="['shift', 's']" @shortkey="upsideDown" @click="upsideDown" :key="flashcardSide">
@@ -16,16 +16,21 @@
     <v-container>
       <v-row justify="center">
         <v-col cols="12" lg="4" md="6" sm="8">
-          <v-card loading>
+          <v-card class="my-2" elevation="10" loading>
             <template v-slot:progress>
-              <v-progress-linear :value="Math.ceil(100 - (quiz.progress.questionsLeft.length/quiz.flashcard.questions.length)*100)" color="white">
-              </v-progress-linear>
+              <v-progress-linear height="15" :value="Math.ceil(100 - (quiz.progress.questionsLeft.length/quiz.flashcard.questions.length)*100)" color="white">
+                <div style="font-size: 0.7rem;" class="text-center black--text">
+                  <span class="font-weight-bold">{{quiz.progress.questionsLeft.length}}</span> pozostało • 
+                  <span class="font-weight-bold">{{quiz.progress.questionsSkipped.length}}</span> odwrócono •
+                  <span class="font-weight-bold">{{quiz.flashcard.questions.length}}</span> w puli
+                </div>
+              </v-progress-linear>  
             </template>
             <v-card-title>
-              <v-text-field class="text-center" autofocus :disabled="!control" v-model="translation" :color="color" hide-details flat/>
+              <v-text-field autofocus :disabled="!control" v-model="translation" :color="color" hide-details flat/>
             </v-card-title>
-            <v-card-text class="text-center">
-              <v-btn text @click="abort();">Przerwij quiz <v-icon class="ml-2" small>mdi-close</v-icon></v-btn>
+            <v-card-text class="mt-2 text-center">
+              <v-btn text @click="abort();">Przerwij quiz</v-btn>
             </v-card-text>
           </v-card>
           <div class="text-center my-3 grey--text text--darken-1 caption">
