@@ -302,6 +302,9 @@ export default {
 </script>
 
 <style scoped>
+:root {
+  color-scheme: dark;
+}
 .header {
   background-color: black;
   width: 100%;

@@ -59,3 +59,16 @@ export default {
   }
 }
 </script>
+
+<style>
+:root {
+  color-scheme: dark;
+}
+body {
+  overflow-y: auto;
+}
+html { 
+  overflow-y: auto;
+  scroll-behavior: smooth; 
+}
+</style>
