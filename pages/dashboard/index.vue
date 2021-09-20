@@ -132,30 +132,35 @@ export default {
     },
     async upload() {
       var options = {
-        accept: '.json',
-        multiple: false
+          accept: '.json',
+          multiple: true
       };
-      var that = this;
 
       const filePromise = pickFile(options);
 
       try {
-        const file = await filePromise;
-
-        if(file[0]) {
-          var reader = new FileReader();
-          reader.readAsText(file[0], "UTF-8");
-          reader.onload = function (evt) {
-            var flashcard = JSON.parse(evt.target.result);
-            that.$store.commit("storage/ADD_FLASHCARD", flashcard);
-            that.$store.dispatch("storage/SAVE_FLASHCARDS_TO_STORAGE");
-          }
-          reader.onerror = function (evt) {
-            //this.$toast("Wystąpił błąd podczas czytania pliku!");
+        const files = await filePromise;
+        if(files.length) {
+          for(let i=0; i<files.length; i++) {
+            this.readFlashcardFile(files[i]);
           }
         }
       } catch (e) {
         return e;
+      }
+    },
+    readFlashcardFile(file) {
+      var reader = new FileReader();
+      var that = this;
+
+      reader.readAsText(file, "UTF-8");
+      
+      reader.onload = function (evt) {
+          var flashcard = JSON.parse(evt.target.result);
+          if(!flashcard.id) return;
+
+          that.$store.commit("storage/ADD_FLASHCARD", flashcard);
+          that.$store.dispatch("storage/SAVE_FLASHCARDS_TO_STORAGE");
       }
     },
     async deleteAll() {
