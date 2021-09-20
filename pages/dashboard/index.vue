@@ -132,8 +132,8 @@ export default {
     },
     async upload() {
       var options = {
-          accept: '.json',
-          multiple: true
+        accept: '.json',
+        multiple: true
       };
 
       const filePromise = pickFile(options);
@@ -145,7 +145,15 @@ export default {
             this.readFlashcardFile(files[i]);
           }
         }
+        this.$dialog.notify.success('Pomyślnie zaimportowano!', {
+          position: 'bottom-right',
+          timeout: 2000
+        })
       } catch (e) {
+        this.$dialog.notify.error('Coś poszło nie tak przy importowaniu!', {
+          position: 'bottom-right',
+          timeout: 2000
+        })
         return e;
       }
     },
@@ -176,8 +184,7 @@ export default {
       });
 
       if(!response) return;
-      if(this.storage.flashcards.length==0)
-        return; //this.$toast("Brak pozycji do usunięcia. 🙃");
+      if(this.storage.flashcards.length==0) return;
 
       this.$store.commit("storage/SET_FLASHCARDS", []);
       this.$store.dispatch("storage/SAVE_FLASHCARDS_TO_STORAGE");

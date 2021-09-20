@@ -80,6 +80,10 @@ export default {
 
       this.$store.commit("quiz/RESET_QUIZ");
       this.$router.push("/dashboard");
+      this.$dialog.notify.success('Ukończono quiz!', {
+        position: 'bottom-right',
+        timeout: 2000
+      })
     },
     handleTranslation(e) {
       this.$store.commit("quiz/SET_USER_TRANSLATION", e);
@@ -137,12 +141,10 @@ export default {
     abort() {
       this.$store.commit("quiz/RESET_QUIZ");
       this.$router.push("/dashboard");
-      //this.$toast(`Przerwano quiz na twoje życzenie. 👊`);
     }
   },
   mounted() {
     if(this.quiz.flashcard.id == null) {
-      //this.$toast(`Rozpocznij quiz z edytora lub dashboardu. 😺`, { timeout: 5000 });
       this.$router.push('/dashboard');
     }
 
