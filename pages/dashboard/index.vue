@@ -200,7 +200,7 @@ export default {
   mounted() {
     this.$store.dispatch("storage/GET_FLASHCARDS_FROM_STORAGE");
 
-    if(!storage.flashcards.length) {
+    if(!this.storage.flashcards.length) {
       this.builtin.forEach(async item => {
         var data = await fetch(`/builtin/${item}`);
         var flashcard = await data.json();
