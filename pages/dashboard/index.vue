@@ -200,12 +200,14 @@ export default {
   mounted() {
     this.$store.dispatch("storage/GET_FLASHCARDS_FROM_STORAGE");
 
-    this.builtin.forEach(async item => {
-      var data = await fetch(`/builtin/${item}`);
-      var flashcard = await data.json();
+    if(!storage.flashcards.length) {
+      this.builtin.forEach(async item => {
+        var data = await fetch(`/builtin/${item}`);
+        var flashcard = await data.json();
 
-      this.$store.commit("storage/ADD_FLASHCARD", flashcard);
-    });
+        this.$store.commit("storage/ADD_FLASHCARD", flashcard);
+      });
+    }
   },
   computed: {
     ...mapState(["storage"]),
