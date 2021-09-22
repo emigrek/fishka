@@ -206,6 +206,7 @@ export default {
         var flashcard = await data.json();
 
         this.$store.commit("storage/ADD_FLASHCARD", flashcard);
+        this.$store.dispatch("storage/SAVE_FLASHCARDS_TO_STORAGE");
       });
     }
   },
