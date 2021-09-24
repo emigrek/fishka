@@ -52,10 +52,6 @@
 import { mapState, mapMutations } from "vuex";
 
 export default {
-  head: {
-    title: `Fishka • Quiz`,
-    meta: [{ hid: "description", name: "description", content: "Quiz" }]
-  },
   data() {
     return {
       loading: true,

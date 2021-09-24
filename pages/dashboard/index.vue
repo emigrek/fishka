@@ -79,10 +79,6 @@ import fileDownload from "js-file-download";
 import { pickFile } from 'js-pick-file';
 
 export default {
-  head: {
-    title: `Fishka • Dashboard`,
-    meta: [{ hid: "description", name: "description", content: "Dashboard" }],
-  },
   components: {
     AddFlashcardDialog: () => import("~/components/AddFlashcardDialog")
   },

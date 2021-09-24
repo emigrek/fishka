@@ -119,10 +119,6 @@ import { mapState, mapMutations } from "vuex";
 import fileDownload from "js-file-download";
 
 export default {
-  head: {
-    title: `Fishka • Edytor`,
-    meta: [{ hid: "description", name: "description", content: "Edytor" }]
-  },
   components: {
     AddQuestionDialog: () => import("~/components/AddQuestionDialog"),
     EditQuestionDialog: () => import("~/components/EditQuestionDialog")
