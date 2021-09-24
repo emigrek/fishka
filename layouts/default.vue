@@ -9,16 +9,16 @@
       </v-toolbar-title>
       <v-tabs color="white" hide-slider centered>
         <v-tab to="dashboard">
-          <v-icon v-if="this.$vuetify.breakpoint.smAndDown">mdi-folder</v-icon>
-          <span v-else>Biblioteka</span>
+          <v-icon left>mdi-folder</v-icon>
+          <span v-if="!this.$vuetify.breakpoint.smAndDown">Biblioteka</span>
         </v-tab>
         <v-tab :disabled="!storage.flashcards.length || editor.flashcard.id == null" to="editor">
-          <v-icon v-if="this.$vuetify.breakpoint.smAndDown">mdi-pencil</v-icon>
-          <span v-else>Edytor</span>
+          <v-icon left>mdi-pencil</v-icon>
+          <span v-if="!this.$vuetify.breakpoint.smAndDown">Edytor</span>
         </v-tab>
         <v-tab :disabled="!quiz.flashcard.questions.length" to="quiz">
-          <v-icon v-if="this.$vuetify.breakpoint.smAndDown">mdi-gamepad-square</v-icon>
-          <span v-else>Quiz</span>
+          <v-icon left>mdi-gamepad-square</v-icon>
+          <span v-if="!this.$vuetify.breakpoint.smAndDown">Quiz</span>
         </v-tab>
       </v-tabs>
     </v-app-bar>
