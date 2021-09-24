@@ -4,7 +4,7 @@
       app
       color="black"
     >
-      <v-toolbar-title @click="$router.push('/dashboard');" style="cursor: pointer; max-width: 60px;">
+      <v-toolbar-title @click="$router.push('/dashboard');" style="cursor: pointer; max-width: 55px;">
         <v-img eager src="/logo.png"/>
       </v-toolbar-title>
       <v-tabs color="white" hide-slider centered>

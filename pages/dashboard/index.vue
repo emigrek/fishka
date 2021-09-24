@@ -24,7 +24,7 @@
           >
             mdi-delete
           </v-icon>
-          Usuń wszystkie
+          Wyczyść
         </v-btn>
       </div>
     </v-banner>
@@ -40,22 +40,16 @@
       </v-col>
       <v-col v-for="flashcard in storage.flashcards" :key="flashcard.id" cols="12" xs="12" sm="12" md="6" lg="3">
         <v-card color="grey darken-4" flat>
-          <v-app-bar flat color="rgba(0,0,0,0)">
+          <v-app-bar flat color="grey darken-3">
             <v-toolbar-title>{{flashcard.name}}</v-toolbar-title>
             <v-spacer/>
+            <v-btn :disabled="flashcard.questions.length < 2" @click="loadToQuiz(flashcard)" class="mx-1" small icon><v-icon>mdi-gamepad-square</v-icon></v-btn>
+            <v-btn @click="$router.push(`/editor?show=${flashcard.id}`);" class="mx-1" small icon><v-icon>mdi-pencil</v-icon></v-btn>
             <v-menu offset-y>
               <template v-slot:activator="{ on, attrs }">
                 <v-btn v-on="on" v-bind="attrs" small icon><v-icon>mdi-dots-vertical</v-icon></v-btn>
               </template>
               <v-list>
-                <v-list-item @click="$router.push(`/editor?show=${flashcard.id}`);">
-                  <v-list-item-icon><v-icon>mdi-pencil</v-icon></v-list-item-icon>
-                  <v-list-item-title>Edytuj</v-list-item-title>
-                </v-list-item>
-                <v-list-item :disabled="flashcard.questions.length < 2" @click="loadToQuiz(flashcard)">
-                  <v-list-item-icon><v-icon>mdi-gamepad-square</v-icon></v-list-item-icon>
-                  <v-list-item-title>Quiz</v-list-item-title>
-                </v-list-item>
                 <v-list-item @click="download(flashcard)">
                   <v-list-item-icon><v-icon>mdi-download</v-icon></v-list-item-icon>
                   <v-list-item-title>Eksportuj</v-list-item-title>
@@ -68,8 +62,6 @@
             </v-menu>
           </v-app-bar>
           <v-card-text>
-            <span class="font-weight-medium">Identyfikator:</span> {{ flashcard.id }}
-            <v-spacer/>
             <span class="font-weight-medium">Ilość pytań:</span> {{ flashcard.questions.length}}
             <v-spacer/>
             <span class="font-weight-medium">Autor:</span> {{ flashcard.author}}

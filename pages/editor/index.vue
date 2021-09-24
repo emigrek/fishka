@@ -1,6 +1,6 @@
 <template>
   <div class="editor-wrapper">
-    <header class="header pt-10 pb-15">
+    <header class="header pt-10 pb-16">
       <div class="header-content-container mx-auto">
         <div class="inner-header">
           <v-row>
