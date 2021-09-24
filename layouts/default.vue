@@ -12,11 +12,11 @@
           <v-icon left>mdi-folder</v-icon>
           <span v-if="!this.$vuetify.breakpoint.smAndDown">Biblioteka</span>
         </v-tab>
-        <v-tab v-if="editor.flashcard.id != null" to="editor">
+        <v-tab :disabled="!storage.flashcards.length || editor.flashcard.id == null" to="editor">
           <v-icon left>mdi-pencil</v-icon>
           <span v-if="!this.$vuetify.breakpoint.smAndDown">Edytor</span>
         </v-tab>
-        <v-tab v-if="quiz.progress.running" to="quiz">
+        <v-tab :disabled="!quiz.progress.running" to="quiz">
           <v-icon left>mdi-gamepad-square</v-icon>
           <span v-if="!this.$vuetify.breakpoint.smAndDown">Quiz</span>
         </v-tab>

@@ -28,7 +28,7 @@
         </v-btn>
       </div>
     </v-banner>
-    <v-row align="center">
+    <v-row class="pt-2" align="center">
       <v-col v-if="storage.flashcards.length == 0" cols="12" class="text-center body-2 mt-2 grey--text">
         <v-icon color="grey" class="huge">mdi-cards</v-icon>
         <br/>
@@ -39,15 +39,15 @@
         </p>
       </v-col>
       <v-col v-for="flashcard in storage.flashcards" :key="flashcard.id" cols="12" xs="12" sm="12" md="6" lg="3">
-        <v-card color="grey darken-4" flat>
-          <v-app-bar flat color="grey darken-3">
+        <v-card flat color="grey darken-4" elevation="15">
+          <v-app-bar flat color="grey darken-4">
             <v-toolbar-title>{{flashcard.name}}</v-toolbar-title>
             <v-spacer/>
-            <v-btn :disabled="flashcard.questions.length < 2" @click="loadToQuiz(flashcard)" class="mx-1" small icon><v-icon>mdi-gamepad-square</v-icon></v-btn>
-            <v-btn @click="$router.push(`/editor?show=${flashcard.id}`);" class="mx-1" small icon><v-icon>mdi-pencil</v-icon></v-btn>
+            <v-btn :disabled="flashcard.questions.length < 2" @click="loadToQuiz(flashcard)" icon><v-icon>mdi-gamepad-square</v-icon></v-btn>
+            <v-btn @click="$router.push(`/editor?show=${flashcard.id}`);" icon><v-icon>mdi-pencil</v-icon></v-btn>
             <v-menu offset-y>
               <template v-slot:activator="{ on, attrs }">
-                <v-btn v-on="on" v-bind="attrs" small icon><v-icon>mdi-dots-vertical</v-icon></v-btn>
+                <v-btn v-on="on" v-bind="attrs" icon><v-icon>mdi-dots-vertical</v-icon></v-btn>
               </template>
               <v-list>
                 <v-list-item @click="download(flashcard)">
@@ -61,6 +61,7 @@
               </v-list>
             </v-menu>
           </v-app-bar>
+          <v-divider class="mx-4"></v-divider>
           <v-card-text>
             <span class="font-weight-medium">Ilość pytań:</span> {{ flashcard.questions.length}}
             <v-spacer/>
