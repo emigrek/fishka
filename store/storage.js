@@ -4,8 +4,7 @@ const STORAGE_NAME = "fishka_flashcards";
 
 
 export const state = () => ({
-    flashcards: [
-    ],
+    flashcards: []
 })
 
 export const mutations = {
