@@ -306,6 +306,6 @@ export default {
   width: 100%;
 }
 .header-content-container {
-  width: 78%;
+  width: 80%;
 }
 </style>
