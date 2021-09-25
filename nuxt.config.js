@@ -28,6 +28,10 @@ export default {
       { name: 'theme-color', content: '#000' }
     ]
   },
+
+  router: {
+    middleware: 'trailingSlashRedirect',
+  },
   /*
   ** Customize the progress-bar color
   */
