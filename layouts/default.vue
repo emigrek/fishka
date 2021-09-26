@@ -1,5 +1,6 @@
 <template>
   <v-app dark>
+    <Splash v-if="splash"/>
     <v-app-bar
       app
       color="black"
@@ -36,13 +37,21 @@ import { mapState, mapMutations } from "vuex";
 export default {
   name: "default",
   transition: 'fade',
+  components: {
+    Splash: () => import("~/components/Splash")
+  },
   data () {
     return {
-      title: "Fishka"
+      title: "Fishka",
+      splash: true
     }
+  },
+  beforeCreate() {
+    this.splash = true;
   },
   mounted() {
     this.$store.dispatch("storage/GET_FLASHCARDS_FROM_STORAGE");
+    setTimeout(() => { this.splash = false; }, 3500);
   },
   watch: {
     $route: function() {
