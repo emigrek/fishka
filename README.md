@@ -4,3 +4,6 @@
 <div align="center">
   <b>fishka</b> - flashcard app
 </div>
+<div align="center">
+  <a href="https://fishka.netlify.app">try it</a>
+</div>
