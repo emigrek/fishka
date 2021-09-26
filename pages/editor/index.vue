@@ -305,7 +305,7 @@ export default {
   background-color: black;
   width: 100%;
   padding-top: 2.5rem;
-  padding-bottom: 6rem;
+  padding-bottom: 6.5rem;
 }
 .header-content-container {
   width: 80%;
