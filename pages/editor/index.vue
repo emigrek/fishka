@@ -1,10 +1,10 @@
 <template>
   <div class="editor-wrapper">
-    <header class="header pt-10 pb-16">
+    <header class="header elevation-10">
       <div class="header-content-container mx-auto">
         <div class="inner-header">
           <v-row>
-            <v-col cols="10" class="text-align-left">
+            <v-col cols="10" class="text-align-left" style="line-height: 0px;">
               <h1 class="text-lg-h3 text-h4 font-weight-black d-inline-block text-truncate" v-bind:style="$vuetify.breakpoint.smAndDown ? 'max-width: 225px' : ''">{{editor.flashcard.name || "Fiszka bez nazwy"}}</h1>
               <div class="subtitle-2 grey--text">
                 <span class="font-weight-bold">Liczba pytań:</span> {{editor.flashcard.questions.length || "0"}}
@@ -304,6 +304,8 @@ export default {
 .header {
   background-color: black;
   width: 100%;
+  padding-top: 2.5rem;
+  padding-bottom: 6rem;
 }
 .header-content-container {
   width: 80%;

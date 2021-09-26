@@ -1,6 +1,6 @@
 <template>
   <div class="editor-wrapper">
-    <header class="header pt-10 pb-16">
+    <header class="header pt-10 pb-16 elevation-10">
       <div class="header-content-container">
         <transition name="flipFlashcard" mode="out-in">
           <div class="flashcard" v-shortkey.once="['shift', 's']" @shortkey="upsideDown" @click="upsideDown" :key="flashcardSide">
