@@ -50,8 +50,8 @@ export default {
     this.splash = true;
   },
   mounted() {
-    this.$store.dispatch("storage/GET_FLASHCARDS_FROM_STORAGE");
     setTimeout(() => { this.splash = false; }, 3500);
+    this.$store.dispatch("storage/GET_FLASHCARDS_FROM_STORAGE");
   },
   watch: {
     $route: function() {

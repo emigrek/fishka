@@ -30,7 +30,7 @@ export default {
   },
 
   router: {
-    middleware: 'trailingSlashRedirect',
+    trailingSlash: false
   },
   /*
   ** Customize the progress-bar color
