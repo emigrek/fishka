@@ -105,7 +105,7 @@ export default {
   data() {
     return {
       dialog: false,
-      builtin: ['UNIT1.json', 'UNIT2.json']
+      builtin: ['UNIT1.json', 'UNIT2.json', 'UNIT4.json']
     };
   },
   methods: {
