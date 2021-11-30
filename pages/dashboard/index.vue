@@ -105,7 +105,7 @@ export default {
   data() {
     return {
       dialog: false,
-      builtin: ['UNIT1.json', 'UNIT2.json', 'UNIT4.json']
+      builtin: ['UNIT1.json', 'UNIT2.json', 'UNIT4.json', 'UNIT5.json']
     };
   },
   methods: {
@@ -213,7 +213,6 @@ export default {
         var data = await fetch(`/builtin/${item}`);
         var flashcard = await data.json();
         flashcard.builtin = true;
-        console.log(flashcard);
 
         this.$store.commit("storage/ADD_FLASHCARD", flashcard);
         this.$store.dispatch("storage/SAVE_FLASHCARDS_TO_STORAGE");
